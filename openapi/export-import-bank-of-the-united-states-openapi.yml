@@ -1,0 +1,123 @@
+openapi: 3.1.0
+info:
+  title: EXIM Bank Open Data API (Socrata SODA)
+  description: |
+    The U.S. Export-Import Bank (EXIM) publishes open government datasets
+    through the federal Data.gov catalog and exposes them via the Socrata
+    Open Data API (SODA). The primary dataset (resource id 8mmf-is58)
+    contains EXIM Bank authorization records from 2006 onward. SODA
+    supports SoQL query parameters and an optional application token via
+    the X-App-Token header for higher rate limits.
+  version: "2.1"
+  contact:
+    name: EXIM Chief Data Officer
+    email: CDO@exim.gov
+    url: https://www.exim.gov/open-government-data
+servers:
+  - url: https://data.exim.gov
+    description: EXIM Socrata domain
+paths:
+  /resource/8mmf-is58.json:
+    get:
+      summary: Query EXIM authorization records (JSON)
+      description: |
+        Returns rows from the EXIM authorization records dataset in JSON.
+        Use SoQL query parameters ($select, $where, $order, $limit,
+        $offset, $q) to filter and shape results.
+      operationId: getEximAuthorizationsJson
+      parameters:
+        - $ref: '#/components/parameters/Select'
+        - $ref: '#/components/parameters/Where'
+        - $ref: '#/components/parameters/Order'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Offset'
+        - $ref: '#/components/parameters/QueryFullText'
+      responses:
+        "200":
+          description: Array of authorization rows
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+  /resource/8mmf-is58.csv:
+    get:
+      summary: Query EXIM authorization records (CSV)
+      operationId: getEximAuthorizationsCsv
+      parameters:
+        - $ref: '#/components/parameters/Select'
+        - $ref: '#/components/parameters/Where'
+        - $ref: '#/components/parameters/Order'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Offset'
+      responses:
+        "200":
+          description: CSV export
+          content:
+            text/csv:
+              schema:
+                type: string
+  /api/views/8mmf-is58.json:
+    get:
+      summary: Get dataset metadata
+      description: Returns the Socrata view metadata for the EXIM authorizations dataset.
+      operationId: getEximDatasetMetadata
+      responses:
+        "200":
+          description: Dataset metadata
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  parameters:
+    Select:
+      name: $select
+      in: query
+      description: SoQL SELECT clause - columns or aggregate expressions to return.
+      schema:
+        type: string
+    Where:
+      name: $where
+      in: query
+      description: SoQL WHERE clause - filter records.
+      schema:
+        type: string
+    Order:
+      name: $order
+      in: query
+      description: SoQL ORDER BY clause.
+      schema:
+        type: string
+    Limit:
+      name: $limit
+      in: query
+      description: Maximum rows returned (default 1000).
+      schema:
+        type: integer
+        default: 1000
+    Offset:
+      name: $offset
+      in: query
+      description: Row offset for pagination.
+      schema:
+        type: integer
+        default: 0
+    QueryFullText:
+      name: $q
+      in: query
+      description: Full-text search across all string fields.
+      schema:
+        type: string
+  securitySchemes:
+    AppToken:
+      type: apiKey
+      in: header
+      name: X-App-Token
+      description: |
+        Optional Socrata application token. Unauthenticated requests
+        are subject to lower throttling limits.
+security:
+  - {}
+  - AppToken: []
