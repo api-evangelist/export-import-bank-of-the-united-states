@@ -1,14 +1,21 @@
 {
-  "repo": "about-exim-exim-gov-export-import-bank-of-the-united-states",
+  "repo": "export-import-bank-of-the-united-states",
   "feeds": [
     {
-      "source": "https://grow.exim.gov/blog",
+      "source": "https://grow.exim.gov/blog/atom.xml",
       "feed_url": "https://grow.exim.gov/blog/atom.xml",
-      "title": "Export Finance Solutions",
+      "title": "",
       "saved": 0,
-      "last_error": "http_404"
+      "method": "feed"
+    },
+    {
+      "source": "https://www.exim.gov/open-government-data",
+      "feed_url": "https://www.exim.gov/open-government-data",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "post_count": 10,
-  "fetched": "2026-05-17T20:20:35Z"
+  "post_count": 18,
+  "fetched": "2026-06-01T23:35:02Z"
 }
