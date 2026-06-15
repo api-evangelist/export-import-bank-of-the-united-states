@@ -1,0 +1,113 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EXIM Bank Open Data API (Socrata SODA)",
+    "version": "2.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Query EXIM authorization records (JSON)",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://data.exim.gov/resource/8mmf-is58.json",
+        "params": [
+          {
+            "name": "$select",
+            "value": "",
+            "type": "query",
+            "description": "SoQL SELECT clause - columns or aggregate expressions to return."
+          },
+          {
+            "name": "$where",
+            "value": "",
+            "type": "query",
+            "description": "SoQL WHERE clause - filter records."
+          },
+          {
+            "name": "$order",
+            "value": "",
+            "type": "query",
+            "description": "SoQL ORDER BY clause."
+          },
+          {
+            "name": "$limit",
+            "value": "",
+            "type": "query",
+            "description": "Maximum rows returned (default 1000)."
+          },
+          {
+            "name": "$offset",
+            "value": "",
+            "type": "query",
+            "description": "Row offset for pagination."
+          },
+          {
+            "name": "$q",
+            "value": "",
+            "type": "query",
+            "description": "Full-text search across all string fields."
+          }
+        ]
+      },
+      "docs": "Returns rows from the EXIM authorization records dataset in JSON.\nUse SoQL query parameters ($select, $where, $order, $limit,\n$offset, $q) to filter and shape results.\n"
+    },
+    {
+      "info": {
+        "name": "Query EXIM authorization records (CSV)",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://data.exim.gov/resource/8mmf-is58.csv",
+        "params": [
+          {
+            "name": "$select",
+            "value": "",
+            "type": "query",
+            "description": "SoQL SELECT clause - columns or aggregate expressions to return."
+          },
+          {
+            "name": "$where",
+            "value": "",
+            "type": "query",
+            "description": "SoQL WHERE clause - filter records."
+          },
+          {
+            "name": "$order",
+            "value": "",
+            "type": "query",
+            "description": "SoQL ORDER BY clause."
+          },
+          {
+            "name": "$limit",
+            "value": "",
+            "type": "query",
+            "description": "Maximum rows returned (default 1000)."
+          },
+          {
+            "name": "$offset",
+            "value": "",
+            "type": "query",
+            "description": "Row offset for pagination."
+          }
+        ]
+      },
+      "docs": "Query EXIM authorization records (CSV)"
+    },
+    {
+      "info": {
+        "name": "Get dataset metadata",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://data.exim.gov/api/views/8mmf-is58.json"
+      },
+      "docs": "Returns the Socrata view metadata for the EXIM authorizations dataset."
+    }
+  ],
+  "bundled": true
+}
