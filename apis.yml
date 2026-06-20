@@ -2,7 +2,7 @@ aid: about-exim-exim-gov-export-import-bank-of-the-united-states
 url: https://raw.githubusercontent.com/api-evangelist/about-exim-exim-gov-export-import-bank-of-the-united-states/refs/heads/main/apis.yml
 name: Export-Import Bank of the United States
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Export
   - Federal Government
