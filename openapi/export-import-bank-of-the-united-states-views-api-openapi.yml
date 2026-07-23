@@ -1,0 +1,55 @@
+openapi: 3.1.0
+info:
+  title: EXIM Bank Open Data API (Socrata SODA) Resource Views API
+  description: 'The U.S. Export-Import Bank (EXIM) publishes open government datasets
+
+    through the federal Data.gov catalog and exposes them via the Socrata
+
+    Open Data API (SODA). The primary dataset (resource id 8mmf-is58)
+
+    contains EXIM Bank authorization records from 2006 onward. SODA
+
+    supports SoQL query parameters and an optional application token via
+
+    the X-App-Token header for higher rate limits.
+
+    '
+  version: '2.1'
+  contact:
+    name: EXIM Chief Data Officer
+    email: CDO@exim.gov
+    url: https://www.exim.gov/open-government-data
+servers:
+- url: https://data.exim.gov
+  description: EXIM Socrata domain
+security:
+- {}
+- AppToken: []
+tags:
+- name: Views
+paths:
+  /api/views/8mmf-is58.json:
+    get:
+      summary: Get dataset metadata
+      description: Returns the Socrata view metadata for the EXIM authorizations dataset.
+      operationId: getEximDatasetMetadata
+      responses:
+        '200':
+          description: Dataset metadata
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - Views
+components:
+  securitySchemes:
+    AppToken:
+      type: apiKey
+      in: header
+      name: X-App-Token
+      description: 'Optional Socrata application token. Unauthenticated requests
+
+        are subject to lower throttling limits.
+
+        '
