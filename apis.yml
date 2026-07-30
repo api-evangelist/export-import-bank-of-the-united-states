@@ -2,7 +2,20 @@ aid: about-exim-exim-gov-export-import-bank-of-the-united-states
 url: https://raw.githubusercontent.com/api-evangelist/about-exim-exim-gov-export-import-bank-of-the-united-states/refs/heads/main/apis.yml
 name: Export-Import Bank of the United States
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/export-import-bank-of-the-united-states.png
 tags:
   - Export
   - Federal Government
@@ -21,24 +34,44 @@ created: '2024-07-11'
 modified: '2026-04-19'
 specificationVersion: '0.19'
 apis:
-  - aid: about-exim-exim-gov-export-import-bank-of-the-united-states:open-data
-    name: EXIM Open Data API
-    tags:
-      - Export
-      - Federal Government
-      - Finance
-      - Open Data
-    humanURL: https://www.exim.gov/open-government-data
-    properties:
-      - type: Documentation
-        url: https://www.exim.gov/open-government-data
-      - type: APIReference
-        url: https://dev.socrata.com/foundry/data.exim.gov/8mmf-is58
-    description: >-
-      EXIM Bank publishes open government datasets through the federal Data.gov
-      catalog. Datasets include export authorization records from 2006 onward,
-      accessible programmatically via the Socrata Open Data API (SODA). The Chief
-      Data Officer can be contacted at CDO@exim.gov for dataset requests.
+- aid: about-exim-exim-gov-export-import-bank-of-the-united-states:open-data
+  name: EXIM Open Data API
+  tags:
+  - Export
+  - Federal Government
+  - Finance
+  - Open Data
+  humanURL: https://www.exim.gov/open-government-data
+  properties:
+  - type: Documentation
+    url: https://www.exim.gov/open-government-data
+  - type: APIReference
+    url: https://dev.socrata.com/foundry/data.exim.gov/8mmf-is58
+  description: >-
+    EXIM Bank publishes open government datasets through the federal Data.gov catalog. Datasets include
+    export authorization records from 2006 onward, accessible programmatically via the Socrata Open Data
+    API (SODA). The Chief Data Officer can be contacted at CDO@exim.gov for dataset requests.
+- aid: >-
+    export-import-bank-of-the-united-states:export-import-bank-of-the-united-states-resource-api
+  name: Export-Import Bank of the United States Resource API
+  description: >-
+    The Resource API from Export-Import Bank of the United States — 2 operation(s) for resource.
+  humanURL: https://www.exim.gov/open-government-data
+  tags:
+  - Resource
+  properties:
+  - type: OpenAPI
+    url: openapi/export-import-bank-of-the-united-states-resource-api-openapi.yml
+- aid: >-
+    export-import-bank-of-the-united-states:export-import-bank-of-the-united-states-views-api
+  name: Export-Import Bank of the United States Views API
+  description: The Views API from Export-Import Bank of the United States — 1 operation(s) for views.
+  humanURL: https://www.exim.gov/open-government-data
+  tags:
+  - Views
+  properties:
+  - type: OpenAPI
+    url: openapi/export-import-bank-of-the-united-states-views-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/export-import-bank-of-the-united-states-agentic-access.yml
