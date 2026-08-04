@@ -1,0 +1,16 @@
+{
+  "provider": "export-import-bank-of-the-united-states",
+  "sources": [
+    "export-import-bank-of-the-united-states-resource-api-openapi.yml",
+    "export-import-bank-of-the-united-states-views-api-openapi.yml"
+  ],
+  "outputs": [
+    "export-import-bank-of-the-united-states-resource-api-openapi.yml",
+    "export-import-bank-of-the-united-states-views-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
