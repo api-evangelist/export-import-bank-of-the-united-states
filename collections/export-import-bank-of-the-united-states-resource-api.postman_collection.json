@@ -1,0 +1,290 @@
+{
+  "item": [
+    {
+      "id": "0a57310a-ec84-408f-b85f-0ab2ff65cee3",
+      "name": "Resource",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4153e19b-9286-452d-938e-2b9e7a22b78f",
+          "name": "Query EXIM authorization records (JSON)",
+          "request": {
+            "name": "Query EXIM authorization records (JSON)",
+            "description": {
+              "content": "Returns rows from the EXIM authorization records dataset in JSON.\nUse SoQL query parameters ($select, $where, $order, $limit,\n$offset, $q) to filter and shape results.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resource",
+                "8mmf-is58.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "SoQL SELECT clause - columns or aggregate expressions to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$where",
+                  "value": "<string>",
+                  "description": "SoQL WHERE clause - filter records."
+                },
+                {
+                  "disabled": false,
+                  "key": "$order",
+                  "value": "<string>",
+                  "description": "SoQL ORDER BY clause."
+                },
+                {
+                  "disabled": false,
+                  "key": "$limit",
+                  "value": "1000",
+                  "description": "Maximum rows returned (default 1000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "$offset",
+                  "value": "0",
+                  "description": "Row offset for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "$q",
+                  "value": "<string>",
+                  "description": "Full-text search across all string fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "587c3ddc-6f11-4d1f-b660-f8a596ef832c",
+              "name": "Array of authorization rows",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resource",
+                    "8mmf-is58.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$where",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "$offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "$q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aefb0add-7eaf-465e-ba32-65d6dc58e73d",
+          "name": "Query EXIM authorization records (CSV)",
+          "request": {
+            "name": "Query EXIM authorization records (CSV)",
+            "description": {},
+            "url": {
+              "path": [
+                "resource",
+                "8mmf-is58.csv"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "SoQL SELECT clause - columns or aggregate expressions to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$where",
+                  "value": "<string>",
+                  "description": "SoQL WHERE clause - filter records."
+                },
+                {
+                  "disabled": false,
+                  "key": "$order",
+                  "value": "<string>",
+                  "description": "SoQL ORDER BY clause."
+                },
+                {
+                  "disabled": false,
+                  "key": "$limit",
+                  "value": "1000",
+                  "description": "Maximum rows returned (default 1000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "$offset",
+                  "value": "0",
+                  "description": "Row offset for pagination."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2f733eda-c3e8-45e6-8bce-b9d68c559636",
+              "name": "CSV export",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resource",
+                    "8mmf-is58.csv"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$where",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "$offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/csv"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/csv"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://data.exim.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "fd800955-f6eb-4b1f-acde-dd601a1f2a8e",
+    "name": "EXIM Bank Open Data API (Socrata SODA) Resource API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The U.S. Export-Import Bank (EXIM) publishes open government datasets\nthrough the federal Data.gov catalog and exposes them via the Socrata\nOpen Data API (SODA). The primary dataset (resource id 8mmf-is58)\ncontains EXIM Bank authorization records from 2006 onward. SODA\nsupports SoQL query parameters and an optional application token via\nthe X-App-Token header for higher rate limits.\n\n\nContact Support:\n Name: EXIM Chief Data Officer\n Email: CDO@exim.gov",
+      "type": "text/plain"
+    }
+  }
+}

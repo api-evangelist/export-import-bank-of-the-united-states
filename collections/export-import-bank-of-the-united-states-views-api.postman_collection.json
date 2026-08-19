@@ -1,0 +1,109 @@
+{
+  "item": [
+    {
+      "id": "5de8c7f4-3a2b-4728-b7f8-27061d0da6f6",
+      "name": "Views",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "be9b857c-47ec-442f-8346-4e06b24f151e",
+          "name": "Get dataset metadata",
+          "request": {
+            "name": "Get dataset metadata",
+            "description": {
+              "content": "Returns the Socrata view metadata for the EXIM authorizations dataset.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "views",
+                "8mmf-is58.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8e8cc8f9-6a80-4f13-93ae-19f568d39118",
+              "name": "Dataset metadata",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "views",
+                    "8mmf-is58.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://data.exim.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "df0ace31-c80b-4a83-b239-c81de40c442d",
+    "name": "EXIM Bank Open Data API (Socrata SODA) Resource Views API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The U.S. Export-Import Bank (EXIM) publishes open government datasets\nthrough the federal Data.gov catalog and exposes them via the Socrata\nOpen Data API (SODA). The primary dataset (resource id 8mmf-is58)\ncontains EXIM Bank authorization records from 2006 onward. SODA\nsupports SoQL query parameters and an optional application token via\nthe X-App-Token header for higher rate limits.\n\n\nContact Support:\n Name: EXIM Chief Data Officer\n Email: CDO@exim.gov",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EXIM Bank Open Data API (Socrata SODA) Resource Views API",
+    "version": "2.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Views",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get dataset metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.exim.gov/api/views/8mmf-is58.json"
+          },
+          "docs": "Returns the Socrata view metadata for the EXIM authorizations dataset."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
