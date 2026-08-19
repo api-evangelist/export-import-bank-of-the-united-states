@@ -32,7 +32,7 @@ description: >-
   using the Socrata Open Data API (SODA).
 created: '2024-07-11'
 modified: '2026-04-19'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: about-exim-exim-gov-export-import-bank-of-the-united-states:open-data
   name: EXIM Open Data API
