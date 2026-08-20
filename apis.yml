@@ -18,6 +18,12 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/export-import-bank-of-the-united-states.png
 tags:
   - Export
+  - Federal-Government
+  - Finance
+  - Import
+  - Trade Finance
+tags_raw:
+  - Export
   - Federal Government
   - Finance
   - Import
@@ -37,6 +43,11 @@ apis:
 - aid: about-exim-exim-gov-export-import-bank-of-the-united-states:open-data
   name: EXIM Open Data API
   tags:
+  - Export
+  - Federal-Government
+  - Finance
+  - Open Data
+  tags_raw:
   - Export
   - Federal Government
   - Finance
