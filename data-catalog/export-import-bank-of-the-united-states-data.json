@@ -1,0 +1,55 @@
+{
+  "@context": "https://project-open-data.cio.gov/v1.1/schema/catalog.jsonld",
+  "@id": "https://img.exim.gov/s3fs-public/dataset/vbhv-d8am/data.json",
+  "@type": "dcat:Catalog",
+  "conformsTo": "https://project-open-data.cio.gov/v1.1/schema",
+  "describedBy": "https://project-open-data.cio.gov/v1.1/schema/catalog.json",
+  "dataset": [
+    {
+      "accessLevel": "public",
+      "bureauCode": [
+        "351:00"
+      ],
+      "issued": "2018-10-22",
+      "@type": "dcat:Dataset",
+      "modified": "2026-07-06",
+      "keyword": [
+        "exim",
+        "export import bank",
+        "guarantee",
+        "insurance",
+        "loan",
+        "working capital"
+      ],
+      "contactPoint": {
+        "@type": "vcard:Contact",
+        "fn": "Export Import Bank – Office of Chief Financial Officer  202-565-3946, Option 0",
+        "hasEmail": "mailto:foia@exim.gov"
+      },
+      "publisher": {
+        "@type": "org:Organization",
+        "name": "img.exim.gov/s3fs-public/dataset/vbhv-d8am/data.json"
+      },
+      "identifier": "https://img.exim.gov/s3fs-public/dataset/vbhv-d8am/vbhv-d8am.json",
+      "description": "This file contains all authorizations approved between 10/01/2006 and the latest reporting period.\r\nPlease note that the asterisked Working Capital transactions were extended during the period of EXIM Bank’s lapse in authority in conformance with original authorization agreements. These deals were originally authorized before the lapse as multiyear facilities with annual extensions. This record represents the extension of the prior authorization. EXIM did not authorize new business during its lapse in authority.",
+      "title": "Authorizations From 10/01/2006 Thru 03/31/2026",
+      "programCode": [
+        "351:000"
+      ],
+      "distribution": [
+        {
+          "@type": "dcat:Distribution",
+          "downloadURL": "https://img.exim.gov/s3fs-public/dataset/vbhv-d8am/data-gov_fy26-q2.csv",
+          "mediaType": "text/csv"
+        },
+		{
+		  "@type": "dcat:Distribution",
+		  "title": "Data.gov Report Data Dictionary",
+		  "description": "Defines all columns in the EXIM Data.gov authorization report.",
+		  "mediaType": "application/pdf",
+		  "downloadURL": "https://img.exim.gov/s3fs-public/dataset/vbhv-d8am/EXIM_Data.gov_Report_Data_Dictionary.pdf"
+		}
+      ]
+    }
+  ]
+}

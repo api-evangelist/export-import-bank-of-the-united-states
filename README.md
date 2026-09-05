@@ -1,4 +1,4 @@
-# Export-Import Bank of the United States (about-exim-exim-gov-export-import-bank-of-the-united-states)
+# Export-Import Bank of the United States (export-import-bank-of-the-united-states)
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,13 +64,16 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-The U.S. Export-Import Bank (EXIM) is the official export credit agency of the United States federal government. It assists in financing and facilitating U.S. exports of goods and services by providing export credit insurance, working capital guarantees, and direct loans to help American businesses compete in the global marketplace. EXIM publishes open government data including authorization records accessible via the federal Data.gov catalog using the Socrata Open Data API (SODA).
+The U.S. Export-Import Bank (EXIM) is the official export credit agency of the United States federal government. It assists in financing and facilitating U.S. exports of goods and services by providing export credit insurance, working capital guarantees, loan guarantees and direct loans to help American businesses compete in the global marketplace.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/about-exim-exim-gov-export-import-bank-of-the-united-states/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/about-exim-exim-gov-export-import-bank-of-the-united-states/refs/heads/main/apis.yml)
+**EXIM operates no public API.** Its Socrata/SODA open data portal at `data.exim.gov` was decommissioned on 2023-09-14 by EXIM's own announcement, and the host no longer resolves in DNS. What remains is a Project Open Data v1.1 (DCAT-US) catalog pointing at a quarterly CSV of every authorization approved since FY2007, distributed through Data.gov.
+
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/export-import-bank-of-the-united-states/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/export-import-bank-of-the-united-states/refs/heads/main/apis.yml)
 
 ## Scope
 
 - **Type:** Index
+- **Position:** Producing
 
 ## Tags
 
@@ -78,48 +81,78 @@ The U.S. Export-Import Bank (EXIM) is the official export credit agency of the U
 - Federal Government
 - Finance
 - Import
+- Open Data
 - Trade Finance
 
 ## Timestamps
 
 - **Created:** 2024-07-11
-- **Modified:** 2026-04-19
+- **Modified:** 2026-09-04
 
 ## APIs
 
-### EXIM Open Data API
+### EXIM Open Data Catalog
 
-EXIM Bank publishes open government datasets through the federal Data.gov catalog. Datasets include export authorization records from 2006 onward, accessible programmatically via the Socrata Open Data API (SODA). The Chief Data Officer can be contacted at CDO@exim.gov for dataset requests.
+EXIM's entire programmatic open-data footprint: a Project Open Data v1.1 (DCAT-US) catalog at `data.json` listing one public dataset — every EXIM authorization approved from 10/01/2006 to the current reporting quarter — with a quarterly CSV distribution and a PDF data dictionary. Anonymous HTTPS GET, no key, no quota. This is file distribution, not a query API. The CSV filename carries the fiscal quarter, so consumers must re-read `data.json` rather than pinning the download URL.
 
 - **Human URL:** [https://www.exim.gov/open-government-data](https://www.exim.gov/open-government-data)
-
-#### Tags
-
-- Export
-- Federal Government
-- Finance
-- Open Data
+- **Base URL:** `https://img.exim.gov/s3fs-public/dataset/vbhv-d8am/`
+- **Operator:** institution (EXIM)
 
 #### Properties
 
 - [Documentation](https://www.exim.gov/open-government-data)
-- [API Reference](https://dev.socrata.com/foundry/data.exim.gov/8mmf-is58)
-- [Postman Collection](collections/export-import-bank-of-the-united-states.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/export-import-bank-of-the-united-states.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Data Catalog](data-catalog/export-import-bank-of-the-united-states-data-catalog.yml)
+- [Project Open Data catalog (data.json)](https://img.exim.gov/s3fs-public/dataset/vbhv-d8am/data.json) — [Project Open Data v1.1](https://project-open-data.cio.gov/v1.1/schema)
+- [Data.gov listing](https://catalog.data.gov/organization/exim)
+
+### EXIM Digital Archives (CONTENTdm / IIIF)
+
+26 collections of EXIM's historical record — annual reports, press releases, board materials, executive orders, oral histories, reports to Congress — served over anonymous JSON endpoints and IIIF Presentation API 2.0 manifests at an `exim.gov` address.
+
+**Operator attribution:** `www.digitalarchives.exim.gov` is a CNAME to `cdm16645.contentdm.oclc.org`, and the IIIF manifests resolve their own `@id` to that OCLC host. EXIM is the tenant and owns the content; the contract is OCLC CONTENTdm's product, not an API EXIM engineered.
+
+- **Human URL:** [https://www.digitalarchives.exim.gov/](https://www.digitalarchives.exim.gov/)
+- **Base URL:** `https://www.digitalarchives.exim.gov/digital/`
+- **Operator:** vendor (OCLC CONTENTdm)
+
+#### Properties
+
+- [API Reference](https://help.oclc.org/Metadata_Services/CONTENTdm/Advanced_website_customization/API_Reference/CONTENTdm_API)
+- [IIIF Presentation API 2.1](https://iiif.io/api/presentation/2.1/)
+
+## Artifacts
+
+- [Data catalog](data-catalog/export-import-bank-of-the-united-states-data-catalog.yml) — EXIM's DCAT-US catalog, saved verbatim
+- [Conformance](conformance/export-import-bank-of-the-united-states-conformance.yml) — Project Open Data v1.1, DCAT, IIIF 2.0
+- [Lifecycle](lifecycle/export-import-bank-of-the-united-states-lifecycle.yml) — the dated `data.exim.gov` decommissioning
+- [Plans](plans/export-import-bank-of-the-united-states-plans-pricing.yml) — `plan_count: 0`, free public data
+- [Rate limits](rate-limits/export-import-bank-of-the-united-states-rate-limits.yml) — `limit_count: 0`, no surface to limit
+- [Authentication](authentication/export-import-bank-of-the-united-states-authentication.yml) — anonymous everywhere public
+- [Well-known probe](well-known/export-import-bank-of-the-united-states-well-known.yml) — nothing served, on seven hosts
+- [Domain security](security/export-import-bank-of-the-united-states-domain-security.yml)
+- [Vulnerability disclosure](security/export-import-bank-of-the-united-states-vulnerability-disclosure.yml) — real VDP, not machine-discoverable
+- [Agentic access](agentic-access/export-import-bank-of-the-united-states-agentic-access.yml)
+- [llms.txt](llms/export-import-bank-of-the-united-states-llms.txt)
+
+`_quarantine/` holds a fabricated OpenAPI and everything derived from it, removed from the scored tree on 2026-09-04. See [`_quarantine/NOTE.md`](_quarantine/NOTE.md).
 
 ## Common Properties
 
 - [Website](https://www.exim.gov/)
 - [Portal](https://eximonline.exim.gov/)
 - [Getting Started](https://www.exim.gov/open-government-data)
+- [Security / Vulnerability Disclosure Policy](https://www.exim.gov/vulnerability-disclosure-policy)
 - [Blog](https://grow.exim.gov/blog)
-- [Contact](https://www.exim.gov/contact/contact-form)
+- [News](https://www.exim.gov/news)
+- [Support](https://www.exim.gov/contact/contact-form)
 - [Privacy Policy](https://www.exim.gov/privacy-and-security-policy)
-- [LinkedIn](https://www.linkedin.com/company/export-import-bank-of-the-united-states/)
-- [YouTube](https://www.youtube.com/user/EximBank)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
+- [Terms of Service](https://www.exim.gov/policies)
+- [LinkedIn](https://www.linkedin.com/company/eximbankus)
+- [YouTube](https://www.youtube.com/user/EximBankofUS)
+- [Twitter / X](https://x.com/eximbankus)
+- [Facebook](https://www.facebook.com/eximbankus/)
+- [Instagram](https://www.instagram.com/eximbankus/)
 
 ## Maintainers
 

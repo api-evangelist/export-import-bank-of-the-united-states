@@ -1,0 +1,21 @@
+generated: '2026-09-04'
+method: searched
+source: https://www.exim.gov/open-government-data
+limit_count: 0
+rate_limits: []
+headers: []
+status_code_on_exhaustion: null
+note: >-
+  No published rate limits, and no surface to limit. EXIM operates no callable API: its
+  entire programmatic footprint is a static Project Open Data catalog plus a quarterly CSV
+  and a PDF, served from a CloudFront asset origin. There is no throttle, no
+  X-RateLimit-* / RateLimit-* header and no 429 path, because there is no request budget
+  to spend.
+  This file REPLACES a bulk-sweep scaffold that asserted 10 req/min free and 100 req/min
+  professional tiers against a Socrata host (data.exim.gov) that has had no DNS record
+  since 2023-09-14. See _quarantine/NOTE.md.
+observed:
+- url: https://img.exim.gov/s3fs-public/dataset/vbhv-d8am/data.json
+  http_status: 200
+  rate_limit_headers_present: false
+  checked: '2026-09-04'

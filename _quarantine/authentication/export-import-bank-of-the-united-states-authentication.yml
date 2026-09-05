@@ -1,0 +1,18 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/export-import-bank-of-the-united-states-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: AppToken
+  type: apiKey
+  in: header
+  parameter: X-App-Token
+  description: |-
+    Optional Socrata application token. Unauthenticated requests
+    are subject to lower throttling limits.
+  sources:
+  - openapi/export-import-bank-of-the-united-states-openapi.yml

@@ -1,7 +1,8 @@
 aid: export-import-bank-of-the-united-states
-url: https://raw.githubusercontent.com/api-evangelist/about-exim-exim-gov-export-import-bank-of-the-united-states/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/export-import-bank-of-the-united-states/refs/heads/main/apis.yml
 name: Export-Import Bank of the United States
 type: Index
+position: Producing
 deliveryModel:
   model: unknown
   open_source: false
@@ -14,46 +15,54 @@ deliveryModel:
   generated: '2026-08-28'
   method: derived
 accessModel:
-  pricing: freemium
-  onboarding: self-serve
+  pricing: free
+  onboarding: none
   trial: false
   try_now: true
-  public: false
-  label: Freemium · Self-serve signup
-  confidence: medium
+  public: true
+  label: Free public data · No signup, no key
+  confidence: high
   source:
   - plans
   - authentication
-  - security
-  generated: '2026-09-03'
-  method: derived
+  - data-catalog
+  generated: '2026-09-04'
+  method: probed
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/export-import-bank-of-the-united-states.png
 tags:
   - Export
   - Federal-Government
   - Finance
   - Import
+  - Open Data
   - Trade Finance
 tags_raw:
   - Export
   - Federal Government
   - Finance
   - Import
+  - Open Data
   - Trade Finance
 description: >-
-  The U.S. Export-Import Bank (EXIM) is the official export credit agency of
-  the United States federal government. It assists in financing and facilitating
-  U.S. exports of goods and services by providing export credit insurance,
-  working capital guarantees, and direct loans to help American businesses
-  compete in the global marketplace. EXIM publishes open government data
-  including authorization records accessible via the federal Data.gov catalog
-  using the Socrata Open Data API (SODA).
+  The U.S. Export-Import Bank (EXIM) is the official export credit agency of the United
+  States federal government. It assists in financing and facilitating U.S. exports of
+  goods and services by providing export credit insurance, working capital guarantees,
+  loan guarantees and direct loans to help American businesses compete in the global
+  marketplace. EXIM operates no public API. Its former Socrata/SODA open data portal at
+  data.exim.gov was decommissioned on 2023-09-14 by EXIM's own announcement and the host
+  no longer resolves; what remains is a Project Open Data v1.1 (DCAT-US) catalog pointing
+  at a quarterly CSV of every authorization approved since FY2007, distributed through
+  Data.gov. A separate OCLC CONTENTdm tenant serves EXIM's historical archives over
+  CONTENTdm and IIIF Presentation API 2.0 endpoints at an exim.gov address.
 created: '2024-07-11'
-modified: '2026-04-19'
+modified: '2026-09-04'
 specificationVersion: '0.23'
 apis:
-- aid: about-exim-exim-gov-export-import-bank-of-the-united-states:open-data
-  name: EXIM Open Data API
+- aid: export-import-bank-of-the-united-states:open-data
+  name: EXIM Open Data Catalog
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/export-import-bank-of-the-united-states.png
+  x-surface-type: static-file-catalog
+  x-operator: institution
   tags:
   - Export
   - Federal-Government
@@ -65,59 +74,102 @@ apis:
   - Finance
   - Open Data
   humanURL: https://www.exim.gov/open-government-data
+  baseURL: https://img.exim.gov/s3fs-public/dataset/vbhv-d8am/
+  description: >-
+    EXIM's entire programmatic open-data footprint: a Project Open Data v1.1 (DCAT-US)
+    catalog at data.json listing one public dataset — every EXIM authorization approved
+    from 10/01/2006 to the current reporting quarter — with a quarterly CSV distribution
+    and a PDF data dictionary. Anonymous HTTPS GET, no key, no quota. This is FILE
+    DISTRIBUTION, NOT A QUERY API: the SODA/SoQL interface that once served this data at
+    data.exim.gov was decommissioned on 2023-09-14. The CSV filename carries the fiscal
+    quarter, so consumers must re-read data.json rather than pinning the download URL.
   properties:
   - type: Documentation
     url: https://www.exim.gov/open-government-data
+  - type: x-DataCatalog
+    url: data-catalog/export-import-bank-of-the-united-states-data-catalog.yml
+  - type: x-ProjectOpenData
+    url: https://img.exim.gov/s3fs-public/dataset/vbhv-d8am/data.json
+  - type: x-CatalogListing
+    url: https://catalog.data.gov/organization/exim
+- aid: export-import-bank-of-the-united-states:digital-archives
+  name: EXIM Digital Archives (CONTENTdm / IIIF)
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/export-import-bank-of-the-united-states.png
+  x-operator: vendor
+  x-operator-name: OCLC CONTENTdm
+  tags:
+  - Federal-Government
+  - Archives
+  - Open Data
+  tags_raw:
+  - Federal Government
+  - Archives
+  - Open Data
+  humanURL: https://www.digitalarchives.exim.gov/
+  baseURL: https://www.digitalarchives.exim.gov/digital/
+  description: >-
+    26 collections of EXIM's historical record — annual reports, press releases, board
+    materials, executive orders, oral histories, reports to Congress — served over
+    anonymous JSON endpoints and IIIF Presentation API 2.0 manifests at an exim.gov
+    address. OPERATOR ATTRIBUTION: www.digitalarchives.exim.gov is a CNAME to
+    cdm16645.contentdm.oclc.org and the IIIF manifests resolve their own @id to that OCLC
+    host. EXIM is the tenant and owns the content; the contract is OCLC CONTENTdm's
+    product, not an API EXIM engineered. Recorded so the surface is discoverable without
+    crediting EXIM with a vendor's API.
+  properties:
   - type: APIReference
-    url: https://dev.socrata.com/foundry/data.exim.gov/8mmf-is58
-  description: >-
-    EXIM Bank publishes open government datasets through the federal Data.gov catalog. Datasets include
-    export authorization records from 2006 onward, accessible programmatically via the Socrata Open Data
-    API (SODA). The Chief Data Officer can be contacted at CDO@exim.gov for dataset requests.
-- aid: >-
-    export-import-bank-of-the-united-states:export-import-bank-of-the-united-states-resource-api
-  name: Export-Import Bank of the United States Resource API
-  description: >-
-    The Resource API from Export-Import Bank of the United States — 2 operation(s) for resource.
-  humanURL: https://www.exim.gov/open-government-data
-  tags:
-  - Resource
-  properties:
-  - type: OpenAPI
-    url: openapi/export-import-bank-of-the-united-states-resource-api-openapi.yml
-- aid: >-
-    export-import-bank-of-the-united-states:export-import-bank-of-the-united-states-views-api
-  name: Export-Import Bank of the United States Views API
-  description: The Views API from Export-Import Bank of the United States — 1 operation(s) for views.
-  humanURL: https://www.exim.gov/open-government-data
-  tags:
-  - Views
-  properties:
-  - type: OpenAPI
-    url: openapi/export-import-bank-of-the-united-states-views-api-openapi.yml
+    url: https://help.oclc.org/Metadata_Services/CONTENTdm/Advanced_website_customization/API_Reference/CONTENTdm_API
+  - type: x-IIIF
+    url: https://iiif.io/api/presentation/2.1/
 common:
-  - type: AgenticAccess
-    url: agentic-access/export-import-bank-of-the-united-states-agentic-access.yml
-  - type: DomainSecurity
-    url: security/export-import-bank-of-the-united-states-domain-security.yml
-  - type: Authentication
-    url: authentication/export-import-bank-of-the-united-states-authentication.yml
   - type: Website
     url: https://www.exim.gov/
   - type: Portal
     url: https://eximonline.exim.gov/
   - type: GettingStarted
     url: https://www.exim.gov/open-government-data
+  - type: LLMsTxt
+    url: llms/export-import-bank-of-the-united-states-llms.txt
+  - type: Conformance
+    url: conformance/export-import-bank-of-the-united-states-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/export-import-bank-of-the-united-states-lifecycle.yml
+  - type: Plans
+    url: plans/export-import-bank-of-the-united-states-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/export-import-bank-of-the-united-states-rate-limits.yml
+  - type: Authentication
+    url: authentication/export-import-bank-of-the-united-states-authentication.yml
+  - type: DomainSecurity
+    url: security/export-import-bank-of-the-united-states-domain-security.yml
+  - type: VulnerabilityDisclosure
+    url: security/export-import-bank-of-the-united-states-vulnerability-disclosure.yml
+  - type: Security
+    url: https://www.exim.gov/vulnerability-disclosure-policy
+  - type: AgenticAccess
+    url: agentic-access/export-import-bank-of-the-united-states-agentic-access.yml
   - type: Blog
     url: https://grow.exim.gov/blog
+  - type: Newsroom
+    url: https://www.exim.gov/news
+  - type: Support
+    url: https://www.exim.gov/contact/contact-form
   - type: Contact
     url: https://www.exim.gov/contact/contact-form
   - type: PrivacyPolicy
     url: https://www.exim.gov/privacy-and-security-policy
+  - type: TermsOfService
+    url: https://www.exim.gov/policies
   - type: LinkedIn
-    url: https://www.linkedin.com/company/export-import-bank-of-the-united-states/
+    url: https://www.linkedin.com/company/eximbankus
   - type: YouTube
-    url: https://www.youtube.com/user/EximBank
+    url: https://www.youtube.com/user/EximBankofUS
+  - type: Twitter
+    url: https://x.com/eximbankus
+  - type: Facebook
+    url: https://www.facebook.com/eximbankus/
+  - type: Instagram
+    url: https://www.instagram.com/eximbankus/
   - type: Features
     data:
       - name: Export Credit Insurance
@@ -129,11 +181,13 @@ common:
       - name: Direct Loans
         description: Fixed-rate loans provided directly to foreign buyers to finance purchases of US exports.
       - name: Open Government Data
-        description: Public datasets including authorization records accessible via Data.gov and the Socrata Open Data API.
+        description: A Project Open Data v1.1 catalog and quarterly CSV of every EXIM authorization since FY2007, distributed free through Data.gov.
       - name: Country Limitation Schedule
         description: Interactive tool to verify export eligibility and financing availability by country.
       - name: EXIM Online Portal
-        description: Online portal for submitting and managing export financing applications electronically.
+        description: Authenticated portal for submitting and managing export financing applications electronically.
+      - name: Digital Archives
+        description: 26 collections of EXIM's historical record served over CONTENTdm and IIIF endpoints, hosted by OCLC on an exim.gov address.
   - type: UseCases
     data:
       - name: Export Financing for Small Businesses
@@ -143,15 +197,46 @@ common:
       - name: Export Risk Mitigation
         description: Protect US exporters against non-payment risk in international transactions.
       - name: Market Research and Data Analysis
-        description: Use EXIM open data to analyze US export financing trends, authorized amounts, and industry distributions.
+        description: Bulk-download the authorization CSV to analyze US export financing trends, authorized amounts, and industry distributions.
       - name: Policy and Compliance Research
-        description: Access authorization records for policy analysis, academic research, and government oversight.
+        description: Access authorization records and archival board materials for policy analysis, academic research, and government oversight.
   - type: Integrations
     data:
       - name: Data.gov
-        description: EXIM datasets are published through the federal Data.gov catalog for public access.
-      - name: Socrata SODA API
-        description: EXIM open data is accessible via the Socrata Open Data API (SODA) for programmatic data access.
+        description: EXIM's single public dataset is registered on the federal Data.gov catalog under the exim organization.
+      - name: OCLC CONTENTdm
+        description: Vendor platform hosting the EXIM Digital Archives and its CONTENTdm/IIIF endpoints under www.digitalarchives.exim.gov.
+      - name: Bugcrowd
+        description: Managed platform for EXIM's Vulnerability Disclosure Program at bugcrowd.com/exim-vdp.
+      - name: HubSpot
+        description: Hosts grow.exim.gov, EXIM's exporter-education blog and content site.
+x-enrichment:
+  date: '2026-09-04'
+  status: minimal
+  artifacts_added: 9
+  pass: local-v3
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    EXIM retired its only programmatic surface — the Socrata/SODA portal at data.exim.gov —
+    on 2023-09-14 by its own published announcement, and the host now has no DNS record at
+    all; what replaced it is a quarterly CSV behind a Project Open Data catalog, so there is
+    no endpoint left to document.
+  evidence:
+    - url: https://data.exim.gov/
+      status: 0
+    - url: https://img.exim.gov/s3fs-public/dataset/vbhv-d8am/vbhv-d8am.json
+      status: 200
+    - url: https://img.exim.gov/s3fs-public/dataset/vbhv-d8am/data.json
+      status: 200
+    - url: https://www.exim.gov/open-government-data
+      status: 200
+    - url: https://www.exim.gov/.well-known/security.txt
+      status: 404
+    - url: https://catalog.data.gov/organization/exim
+      status: 200
+  checked: '2026-09-04'
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

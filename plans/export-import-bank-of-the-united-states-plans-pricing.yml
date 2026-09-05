@@ -1,0 +1,24 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+provider: Export-Import Bank of the United States
+providerId: export-import-bank-of-the-united-states
+generated: '2026-09-04'
+method: searched
+source: https://www.exim.gov/open-government-data
+plan_count: 0
+plans: []
+note: >-
+  EXIM publishes NO API plans and charges nothing for data access, and this is the correct
+  and expected answer for a US federal agency. Its open data is released under the
+  Foundations for Evidence-Based Policymaking Act of 2018 and OMB M-25-05 as a public
+  obligation, distributed as a free CSV through Data.gov. There is no signup, no key, no
+  quota and no tier. A plan_count of 0 here is a measurement, not a gap.
+  This file REPLACES a Free / Professional / Enterprise pricing scaffold written by the
+  2026-05-04 bulk sweep, which declared its own values to be "scaffold defaults" and
+  invented a $-priced overage for an agency that sells nothing. See _quarantine/NOTE.md.
+commercial_products:
+  note: >-
+    EXIM does price its actual products — export credit insurance, working capital
+    guarantees, loan guarantees and direct loans — but those are financial instruments
+    quoted per transaction, not API plans, and they are out of scope for this artifact.
+  fee_reference: https://www.exim.gov/tools-for-exporters

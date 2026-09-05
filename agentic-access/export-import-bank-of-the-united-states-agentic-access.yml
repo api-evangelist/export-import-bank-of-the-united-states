@@ -1,44 +1,83 @@
-generated: '2026-07-15'
-method: generated
-source: openapi/export-import-bank-of-the-united-states-openapi.yml
-description: Recommended x-agentic-access execution contracts, classified heuristically from
-  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
-  audience per deployment. See research/curity/agentic-governance/.
+generated: '2026-09-04'
+method: probed
+source: live unauthenticated GETs of every reachable EXIM data surface, 2026-09-04
+description: >-
+  x-agentic-access execution contracts for the surfaces an agent can actually reach. This
+  file REPLACES a version generated from a fabricated OpenAPI, whose three operations
+  (/resource/8mmf-is58.json, .csv and /api/views/8mmf-is58.json) were classified against a
+  host — data.exim.gov — that has had no DNS record since 2023-09-14. See
+  _quarantine/NOTE.md. Every path below was fetched and returned the status recorded.
 summary:
-  operations: 3
+  operations: 4
   by_action_class:
-    connected: 3
+    open: 4
   by_consequence:
-    read: 3
+    read: 4
   human_in_the_loop_required: 0
+  write_operations: 0
+  note: >-
+    EVERY EXIM surface an agent can call is read-only, anonymous and free. There is no
+    write path, no key to leak, no quota to exhaust and no reversal to plan for. The only
+    real agent hazard here is staleness: the CSV URL changes each fiscal quarter, so an
+    agent that caches the download address will silently serve last quarter's data.
 operations:
-- path: /resource/8mmf-is58.json
+- url: https://img.exim.gov/s3fs-public/dataset/vbhv-d8am/data.json
   method: get
-  operationId: getEximAuthorizationsJson
+  http_status: 200
+  name: EXIM Project Open Data catalog
   x-agentic-access:
-    action-class: connected
+    action-class: open
     consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
+    subject: none
+    token: null
     audit: none
-- path: /resource/8mmf-is58.csv
+  note: >-
+    START HERE. Resolve the current CSV download URL from this document on every run
+    rather than caching it.
+- url: https://img.exim.gov/s3fs-public/dataset/vbhv-d8am/data-gov_fy26-q2.csv
   method: get
-  operationId: getEximAuthorizationsCsv
+  http_status: 200
+  name: EXIM authorizations bulk CSV
   x-agentic-access:
-    action-class: connected
+    action-class: open
     consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
+    subject: none
+    token: null
     audit: none
-- path: /api/views/8mmf-is58.json
+  note: >-
+    UNSTABLE ADDRESS. The fiscal quarter is in the filename; this URL is superseded each
+    quarter. Treat it as a pointer read from data.json, never as a constant.
+- url: https://www.digitalarchives.exim.gov/digital/api/collections
   method: get
-  operationId: getEximDatasetMetadata
+  http_status: 200
+  name: EXIM Digital Archives collection list
   x-agentic-access:
-    action-class: connected
+    action-class: open
     consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
+    subject: none
+    token: null
     audit: none
+  operator: vendor
+  operator_name: OCLC CONTENTdm
+- url: https://www.digitalarchives.exim.gov/iiif/{alias}:{id}/manifest.json
+  method: get
+  http_status: 200
+  http_status_evidence: https://www.digitalarchives.exim.gov/iiif/ExImPR01:4250/manifest.json
+  name: IIIF Presentation 2.0 manifest
+  x-agentic-access:
+    action-class: open
+    consequence: read
+    subject: none
+    token: null
+    audit: none
+  operator: vendor
+  operator_name: OCLC CONTENTdm
+unreachable:
+- url: https://eximonline.exim.gov/
+  http_status: 200
+  reason: >-
+    Human login portal carrying a Controlled Unclassified Information banner. No public
+    programmatic entry point. Agents must not attempt access.
+- url: https://data.exim.gov/
+  http_status: 0
+  reason: 'Decommissioned 2023-09-14. DNS resolution failure. Do not retry.'

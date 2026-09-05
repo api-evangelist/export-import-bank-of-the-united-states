@@ -1,0 +1,147 @@
+generated: '2026-09-04'
+method: probed
+source: live HTTPS probes of every host this record knows
+summary: >-
+  NOTHING SERVED. Five hosts probed against the five canonical /.well-known/ paths plus
+  llms.txt; not one returned a real document. No WellKnown or SecurityTxt pointer is wired
+  in apis.yml, because a recorded absence must not read as a presence. Note that EXIM does
+  publish a Vulnerability Disclosure Policy as an HTML page — it simply does not expose it
+  at /.well-known/security.txt, which is the RFC 9116 path a machine would look at first.
+  See security/ for the VDP that does exist.
+hosts:
+- host: www.exim.gov
+  note: Primary Drupal site behind CloudFront. Returns its 15,336-byte HTML 404 page for every miss.
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+  - path: /openapi.json
+    status: 404
+  - path: /swagger.json
+    status: 404
+  - path: /api-docs
+    status: 404
+  - path: /graphql
+    status: 404
+- host: exim.gov
+  note: Apex; serves the identical Drupal site.
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+- host: eximonline.exim.gov
+  note: >-
+    SPA CATCH-ALL — FALSE POSITIVE. Every path returns HTTP 200 with the SAME 6,231-byte
+    HTML login shell ("EXIM Bank Login Portal", CUI warning). None of these 200s is a
+    document; all are recorded as misses.
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: null
+    note: HTML login shell, not a security.txt. Treated as absent.
+  - path: /.well-known/agent-card.json
+    status: 200
+    file: null
+    note: HTML login shell, not an AgentCard. Treated as absent.
+  - path: /.well-known/agent.json
+    status: 200
+    file: null
+    note: HTML login shell. Treated as absent.
+  - path: /.well-known/api-catalog
+    status: 200
+    file: null
+    note: HTML login shell. Treated as absent.
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: null
+    note: HTML login shell. Treated as absent.
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: null
+    note: HTML login shell. Treated as absent.
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    file: null
+    note: HTML login shell. Treated as absent.
+  - path: /llms.txt
+    status: 200
+    file: null
+    note: HTML login shell. Treated as absent.
+- host: grow.exim.gov
+  note: HubSpot-hosted marketing/blog site (CNAME 421983.group33.sites.hubspot.net).
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+- host: img.exim.gov
+  note: >-
+    CloudFront asset origin. Returns 403 for every path outside the published s3fs-public
+    object keys; it is an object store, not a site, so a 403 here is an ordinary edge
+    policy rather than a withheld document.
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+  - path: /.well-known/agent-card.json
+    status: 403
+  - path: /.well-known/agent.json
+    status: 403
+  - path: /.well-known/api-catalog
+    status: 403
+  - path: /llms.txt
+    status: 403
+- host: www.digitalarchives.exim.gov
+  note: >-
+    OCLC CONTENTdm tenant (CNAME cdm16645.contentdm.oclc.org). Vendor-operated; EXIM does
+    not control the /.well-known/ namespace here.
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+  - path: /openapi.json
+    status: 403
+- host: data.exim.gov
+  note: >-
+    DECOMMISSIONED 2023-09-14. No DNS record; curl reports "Could not resolve host". Probed
+    for completeness because a prior round's fabricated OpenAPI named it as the API host.
+  documents:
+  - path: /
+    status: 0
+    note: DNS resolution failure, not an HTTP status.

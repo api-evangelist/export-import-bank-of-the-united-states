@@ -1,0 +1,63 @@
+generated: '2026-09-04'
+method: searched
+source: >-
+  https://img.exim.gov/s3fs-public/dataset/vbhv-d8am/vbhv-d8am.json (EXIM's archived
+  Socrata dataset metadata, HTTP 200) and https://www.exim.gov/open-government-data
+  (HTTP 200)
+summary: >-
+  EXIM has retired its only programmatic data surface and replaced it with static file
+  distribution. There is no versioning policy, no Sunset/Deprecation header practice, no
+  SLA and no status page — because after 2023-09-14 there is no service left to version.
+  The one lifecycle event on record is a real, dated, provider-announced decommissioning.
+versioning:
+  scheme: none
+  current_version: null
+  note: >-
+    Nothing versioned remains. The surviving artifact is a quarterly CSV whose FILENAME
+    carries the fiscal quarter (data-gov_fy26-q2.csv), which is a release marker, not a
+    version scheme: the previous quarter's URL is simply replaced in data.json.
+deprecation_policy:
+  published: false
+  rfc8594_headers: false
+  sunset_header: false
+  deprecation_header: false
+  note: >-
+    EXIM published no deprecation policy and served no Sunset/Deprecation headers. The
+    data.exim.gov shutdown was announced in the prose `description` field of the dataset
+    itself — readable by a human, invisible to a client.
+sla:
+  published: false
+status_page:
+  published: false
+  note: >-
+    No status page found on any exim.gov host. eximonline.exim.gov is an authenticated
+    application portal with no public availability page.
+events:
+- date: '2023-09-14'
+  type: decommissioned
+  surface: data.exim.gov (Socrata / SODA open data portal)
+  announcement_verbatim: >-
+    NOTE: EXIM OPEN/Data.gov data is moving to Catalog.Data.gov! Data.EXIM.gov will cease
+    operations effective 9/14/2023.
+  announcement_source: https://img.exim.gov/s3fs-public/dataset/vbhv-d8am/vbhv-d8am.json
+  announcement_http_status: 200
+  replacement: https://catalog.data.gov/organization/exim
+  verified: '2026-09-04'
+  verification: >-
+    dig returns no A or CNAME record for data.exim.gov; curl reports "Could not resolve
+    host". The retirement is complete — the host is gone, not merely redirected.
+  impact: >-
+    Every SODA query endpoint under data.exim.gov, and the whole SoQL query capability
+    ($select/$where/$order/$limit/$offset/$q), went away with it. Nothing replaced the
+    QUERY interface; only bulk file download survives.
+- date: '2026-07-06'
+  type: dataset-updated
+  surface: Authorizations From 10/01/2006 Thru 03/31/2026
+  source: https://img.exim.gov/s3fs-public/dataset/vbhv-d8am/data.json
+  http_status: 200
+  note: Most recent dataset modification declared in EXIM's DCAT catalog. Cadence is quarterly.
+deprecated_operations: []
+notes:
+- >-
+  This artifact supersedes a fabricated OpenAPI that named data.exim.gov as a live API
+  host. That spec was quarantined on 2026-09-04; see _quarantine/NOTE.md.

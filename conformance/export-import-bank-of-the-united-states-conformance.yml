@@ -1,0 +1,92 @@
+generated: '2026-09-04'
+method: probed
+source: documents fetched from EXIM and EXIM-tenanted hosts on 2026-09-04
+summary: >-
+  EXIM declares exactly one standard in a document it publishes itself: Project Open Data
+  v1.1 (DCAT-US), asserted by the catalog's own `conformsTo` field. A second standard,
+  IIIF Presentation API 2.0, is genuinely served under an exim.gov host but is implemented
+  by OCLC CONTENTdm, EXIM's vendor — it is recorded with that attribution and NOT counted
+  as an EXIM engineering claim. No OAuth, OIDC, SCIM, OData, JSON:API, RFC 9457 or
+  idempotency conformance exists, because EXIM operates no public API.
+conformance:
+- id: project-open-data-1.1
+  label: Project Open Data / DCAT-US v1.1
+  conforms: true
+  method: probed
+  evidence: https://img.exim.gov/s3fs-public/dataset/vbhv-d8am/data.json
+  evidence_http_status: 200
+  declared_in_document: true
+  declaration: >-
+    "conformsTo": "https://project-open-data.cio.gov/v1.1/schema" and
+    "@context": "https://project-open-data.cio.gov/v1.1/schema/catalog.jsonld"
+  note: >-
+    DOMAIN-STANDARD SIGNATURE. This is the interoperability standard for US federal open
+    data publishing, and the document declares it about itself rather than a marketing
+    page claiming it. A harvester that already speaks DCAT-US ingests EXIM's catalog with
+    no bespoke connector. Mandated context: OMB M-25-05 Phase 2 / the Foundations for
+    Evidence-Based Policymaking Act of 2018, which EXIM names on its Open Data Hub page.
+- id: dcat
+  label: W3C DCAT vocabulary
+  conforms: true
+  method: probed
+  evidence: https://img.exim.gov/s3fs-public/dataset/vbhv-d8am/data.json
+  evidence_http_status: 200
+  declaration: 'Document uses dcat:Catalog, dcat:Dataset and dcat:Distribution typing.'
+- id: iiif-presentation-2.0
+  label: IIIF Presentation API 2.0
+  conforms: true
+  method: probed
+  evidence: https://www.digitalarchives.exim.gov/iiif/ExImPR01:4250/manifest.json
+  evidence_http_status: 200
+  declaration: '"@context": "http://iiif.io/api/presentation/2/context.json", "@type": "sc:Manifest"'
+  operator: vendor
+  operator_name: OCLC CONTENTdm
+  note: >-
+    OPERATOR ATTRIBUTION, per the ownership rule. www.digitalarchives.exim.gov is a CNAME
+    to cdm16645.contentdm.oclc.org and the manifest's own @id resolves to that OCLC host.
+    EXIM is the TENANT and owns the content; OCLC ships the contract. This is a real,
+    unauthenticated, standards-conformant surface reachable at an exim.gov address, but it
+    is not an API EXIM engineered, and crediting it to EXIM would repeat the
+    university-vendor misattribution class of error.
+- id: oauth2
+  conforms: false
+  evidence: 'No securitySchemes; no OAuth surface. /.well-known/oauth-authorization-server 404 on every exim.gov host.'
+- id: oidc
+  conforms: false
+  evidence: 'https://www.exim.gov/.well-known/openid-configuration -> 404'
+- id: rfc9457
+  conforms: false
+  evidence: 'No API, therefore no problem+json error envelope. See errors/ absence.'
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: 'https://www.exim.gov/.well-known/security.txt -> 404, despite a published VDP at https://www.exim.gov/vulnerability-disclosure-policy (200).'
+  remedy: >-
+    EXIM already has everything RFC 9116 asks for — a policy URL, a contact address
+    (VDP@exim.gov) and a Bugcrowd program. Serving those four lines at
+    /.well-known/security.txt would make the program machine-discoverable at zero cost.
+- id: odata
+  conforms: false
+  evidence: 'No $metadata surface on any host.'
+- id: scim
+  conforms: false
+  evidence: 'No SCIM schema URNs anywhere in the published surface.'
+compliance:
+  vulnerability_disclosure_program:
+    published: true
+    policy: https://www.exim.gov/vulnerability-disclosure-policy
+    http_status: 200
+    approved_on: '2021-03-25'
+    platform: https://bugcrowd.com/exim-vdp
+    platform_http_status: 200
+    contact: VDP@exim.gov
+    scope: 'Publicly available systems and services within the EXIM.gov domain.'
+    safe_harbor: true
+    note: >-
+      Meets the substance of CISA BOD 20-01 (federal agency VDP requirement) — authorization
+      / safe-harbour language, defined scope, a reporting channel and a managed platform.
+      Its only gap is discoverability: it is not advertised at /.well-known/security.txt.
+  certifications: []
+  note: >-
+    EXIM is a US federal agency; it publishes no SOC 2 / ISO 27001 / PCI trust center. Its
+    assurance regime is FISMA and OMB circulars, evidenced through OIG and GAO reporting
+    rather than a commercial trust portal.

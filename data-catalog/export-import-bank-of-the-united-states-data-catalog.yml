@@ -1,0 +1,67 @@
+generated: '2026-09-04'
+method: searched
+source: https://img.exim.gov/s3fs-public/dataset/vbhv-d8am/data.json
+summary: >-
+  EXIM publishes one first-party machine-readable document: a Project Open Data v1.1
+  (DCAT-US) catalog listing a single public dataset. It is a STATIC FILE CATALOG, not an
+  API — the distributions are a quarterly CSV and a PDF data dictionary. There is no
+  query interface, no authentication, and no rate limit because there is no service to
+  call. This is the whole of EXIM's programmatic open-data surface as of 2026-09-04.
+catalog:
+  url: https://img.exim.gov/s3fs-public/dataset/vbhv-d8am/data.json
+  file: data-catalog/export-import-bank-of-the-united-states-data.json
+  format: application/json
+  specification: Project Open Data / DCAT-US
+  specification_version: '1.1'
+  conforms_to: https://project-open-data.cio.gov/v1.1/schema
+  context: https://project-open-data.cio.gov/v1.1/schema/catalog.jsonld
+  described_by: https://project-open-data.cio.gov/v1.1/schema/catalog.json
+  dataset_count: 1
+  x-evidence:
+    fetched: '2026-09-04'
+    url: https://img.exim.gov/s3fs-public/dataset/vbhv-d8am/data.json
+    http_status: 200
+    content_type: application/json
+    bytes: 2387
+datasets:
+- identifier: https://img.exim.gov/s3fs-public/dataset/vbhv-d8am/vbhv-d8am.json
+  title: Authorizations From 10/01/2006 Thru 03/31/2026
+  access_level: public
+  issued: '2018-10-22'
+  modified: '2026-07-06'
+  bureau_code: '351:00'
+  program_code: '351:000'
+  keywords: [exim, export import bank, guarantee, insurance, loan, working capital]
+  contact:
+    fn: Export Import Bank – Office of Chief Financial Officer, 202-565-3946 Option 0
+    email: foia@exim.gov
+  catalog_page: https://catalog.data.gov/dataset/authorizations-from-10-01-2006-thru-06-30-2025
+  distributions:
+  - media_type: text/csv
+    download_url: https://img.exim.gov/s3fs-public/dataset/vbhv-d8am/data-gov_fy26-q2.csv
+    http_status: 200
+    note: >-
+      Quarterly bulk export. The filename carries the fiscal quarter (fy26-q2), so the
+      URL changes each quarter — a consumer cannot pin a stable download address and must
+      re-read data.json to find the current file.
+  - media_type: application/pdf
+    title: Data.gov Report Data Dictionary
+    download_url: https://img.exim.gov/s3fs-public/dataset/vbhv-d8am/EXIM_Data.gov_Report_Data_Dictionary.pdf
+    http_status: 200
+    note: Column definitions for the CSV. PDF only — the schema is not machine-readable.
+distribution_channel:
+  name: Data.gov
+  organization: https://catalog.data.gov/organization/exim
+  organization_title: Export-Import Bank of the US
+  dataset_count: 1
+  http_status: 200
+  checked: '2026-09-04'
+notes:
+- >-
+  The predecessor Socrata instance data.exim.gov is DECOMMISSIONED. EXIM's own archived
+  dataset metadata states: "NOTE: EXIM OPEN/Data.gov data is moving to Catalog.Data.gov!
+  Data.EXIM.gov will cease operations effective 9/14/2023." The host has no DNS record as
+  of 2026-09-04. See lifecycle/ for the dated record.
+- >-
+  No SODA / Socrata query API remains. Any spec describing $select/$where/$limit against
+  data.exim.gov describes a surface that no longer exists.

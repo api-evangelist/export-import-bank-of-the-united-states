@@ -1,18 +1,45 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/export-import-bank-of-the-united-states-openapi.yml
+generated: '2026-09-04'
+method: probed
+source: live unauthenticated fetches of every EXIM surface, 2026-09-04
 summary:
-  types:
-  - apiKey
-  api_key_in:
-  - header
-schemes:
-- name: AppToken
-  type: apiKey
-  in: header
-  parameter: X-App-Token
-  description: |-
-    Optional Socrata application token. Unauthenticated requests
-    are subject to lower throttling limits.
-  sources:
-  - openapi/export-import-bank-of-the-united-states-openapi.yml
+  types: []
+  public_surfaces_require_no_credential: true
+schemes: []
+note: >-
+  There is no API to authenticate to. Every publicly reachable EXIM data surface is served
+  anonymously over plain HTTPS GET with no key, token, or header of any kind; every
+  authenticated surface is a human web application with no documented programmatic entry
+  point.
+  This file REPLACES an X-App-Token apiKey profile derived from a fabricated Socrata
+  OpenAPI. That header belonged to a data.exim.gov instance decommissioned on 2023-09-14.
+  See _quarantine/NOTE.md.
+surfaces:
+- surface: EXIM Open Data catalog (data.json + CSV + PDF)
+  host: img.exim.gov
+  auth: none
+  verified:
+    url: https://img.exim.gov/s3fs-public/dataset/vbhv-d8am/data.json
+    http_status: 200
+    sent_credentials: false
+- surface: EXIM Digital Archives (OCLC CONTENTdm / IIIF)
+  host: www.digitalarchives.exim.gov
+  auth: none
+  operator: vendor
+  operator_name: OCLC CONTENTdm
+  verified:
+    url: https://www.digitalarchives.exim.gov/digital/api/collections
+    http_status: 200
+    sent_credentials: false
+- surface: EXIM Online application portal
+  host: eximonline.exim.gov
+  auth: gated
+  auth_mechanism: unknown
+  note: >-
+    Interactive login for export-finance applicants, carrying a Controlled Unclassified
+    Information banner. No public developer documentation, no OAuth/OIDC discovery
+    document (/.well-known/openid-configuration returns the SPA shell, not metadata), and
+    no published API. The mechanism cannot be determined without an account, and this
+    pipeline does not create one.
+  verified:
+    url: https://eximonline.exim.gov/
+    http_status: 200
